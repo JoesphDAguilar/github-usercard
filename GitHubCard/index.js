@@ -55,12 +55,12 @@ const followersArray = [];
     </div>
 */
 
-function makeUserCard(data) {
+function makeUserCard({imgUrl, name, gitName, userLoc, userAdd, userFollowers, userFollowing, userBio}) {
 
   const card = document.createElement("div");
   const image = document.createElement("img");
   const cardInfo = document.createElement("div");
-  const header = document.createElement("h3");
+  const headerName = document.createElement("h3");
   const userName = document.createElement("p");
   const location = document.createElement("p");
   const profile = document.createElement("p");
@@ -69,7 +69,21 @@ function makeUserCard(data) {
   const following = document.createElement("p");
   const bio = document.createElement("p");
 
-  
+  card.classList.add("card");
+  cardInfo.classList.add("card-info");
+  headerName.classList.add("name");
+  userName.classList.add("username");
+
+  image.src = imgUrl;
+  headerName.textContent = `${name}`;
+  userName.textContent = `${gitName}`;
+  location.textContent = `${userLoc}`;
+  profile.textContent = "Profile: ";
+  address.href =`${userAdd}`;
+  address.textContent = `${userAdd}`;
+  followers.textContent = `Followers: ${userFollowers}`;
+  following.textContent = `Following: ${userFollowing}`;
+  bio.textContent = `Bio: ${userBio}`;
 }
 
 /*
