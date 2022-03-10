@@ -1,13 +1,15 @@
 import axios from "axios";
-
 /*
   STEP 1: using axios, send a GET request to the following URL
     (replacing the placeholder with your Github name):
     https://api.github.com/users/<your name>
 */
 
-const githubName = axios.get("https://api.github.com/users/JoesphDAguilar");
-console.log(githubName);
+axios.get("https://api.github.com/users/JoesphDAguilar")
+.then(res => {
+  console.log(res.data)
+  document.querySelector(".cards").appendChild(userCardMaker(res.data));
+})
 
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
@@ -55,7 +57,7 @@ const followersArray = [];
     </div>
 */
 
-function makeUserCard({imgUrl, name, gitName, userLoc, userAdd, userFollowers, userFollowing, userBio}) {
+function userCardMaker(data) {
 
   const card = document.createElement("div");
   const image = document.createElement("img");
@@ -74,16 +76,16 @@ function makeUserCard({imgUrl, name, gitName, userLoc, userAdd, userFollowers, u
   headerName.classList.add("name");
   userName.classList.add("username");
 
-  image.src = imgUrl;
-  headerName.textContent = `${name}`;
-  userName.textContent = `${gitName}`;
-  location.textContent = `${userLoc}`;
+  image.src = data.avatar_url;
+  headerName.textContent = `${data.name}`;
+  userName.textContent = `${data.login}`;
+  location.textContent = `${data.location}`;
   profile.textContent = "Profile: ";
-  address.href = userAdd;
-  address.textContent = `${userAdd}`;
-  followers.textContent = `Followers: ${userFollowers}`;
-  following.textContent = `Following: ${userFollowing}`;
-  bio.textContent = `Bio: ${userBio}`;
+  address.href = data.html_url;
+  address.textContent = `${data.html_url}`;
+  followers.textContent = `Followers: ${data.followers}`;
+  following.textContent = `Following: ${data.following}`;
+  bio.textContent = `Bio: ${data.bio}`;
 
   card.appendChild(image);
   card.appendChild(cardInfo);
@@ -99,7 +101,8 @@ function makeUserCard({imgUrl, name, gitName, userLoc, userAdd, userFollowers, u
   return card;
 }
 
-console.log(makeUserCard(githubName))
+
+
 /*
   List of LS Instructors Github username's:
     tetondan
