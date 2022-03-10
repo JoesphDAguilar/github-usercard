@@ -79,13 +79,27 @@ function makeUserCard({imgUrl, name, gitName, userLoc, userAdd, userFollowers, u
   userName.textContent = `${gitName}`;
   location.textContent = `${userLoc}`;
   profile.textContent = "Profile: ";
-  address.href =`${userAdd}`;
+  address.href = userAdd;
   address.textContent = `${userAdd}`;
   followers.textContent = `Followers: ${userFollowers}`;
   following.textContent = `Following: ${userFollowing}`;
   bio.textContent = `Bio: ${userBio}`;
+
+  card.appendChild(image);
+  card.appendChild(cardInfo);
+  cardInfo.appendChild(headerName);
+  cardInfo.appendChild(userName);
+  cardInfo.appendChild(location);
+  cardInfo.appendChild(profile);
+  profile.appendChild(address);
+  cardInfo.appendChild(followers);
+  cardInfo.appendChild(followers);
+  cardInfo.appendChild(bio);
+
+  return card;
 }
 
+console.log(makeUserCard(githubName))
 /*
   List of LS Instructors Github username's:
     tetondan
