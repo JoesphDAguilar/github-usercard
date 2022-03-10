@@ -5,8 +5,10 @@ import axios from "axios";
     (replacing the placeholder with your Github name):
     https://api.github.com/users/<your name>
 */
-const name = axios.get("https://api.github.com/users/JoesphDAguilar");
-console.log(name)
+
+const githubName = axios.get("https://api.github.com/users/JoesphDAguilar");
+console.log(githubName);
+
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
     github info! You will need to understand the structure of this
@@ -52,6 +54,23 @@ const followersArray = [];
       </div>
     </div>
 */
+
+function makeUserCard(data) {
+
+  const card = document.createElement("div");
+  const image = document.createElement("img");
+  const cardInfo = document.createElement("div");
+  const header = document.createElement("h3");
+  const userName = document.createElement("p");
+  const location = document.createElement("p");
+  const profile = document.createElement("p");
+  const address = document.createElement("a");
+  const followers = document.createElement("p");
+  const following = document.createElement("p");
+  const bio = document.createElement("p");
+
+  
+}
 
 /*
   List of LS Instructors Github username's:
